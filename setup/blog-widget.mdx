@@ -1,0 +1,74 @@
+---
+title: Blog Widget
+description: Embed your blog directly into any webpage
+---
+
+The EdgeBlog widget is a lightweight script tag that embeds your latest blog articles directly into any page on your site. It renders inside an isolated container, so it won't interfere with your existing styles or layout.
+
+This is a great option if you want to showcase blog content on specific pages — like your homepage, a landing page, or a resources section — without setting up full [CDN routing](/setup/cdn-routing).
+
+## Adding the widget
+
+<Steps>
+  <Step title="Open the widget configurator">
+    Go to your site's **Setup** page in the EdgeBlog dashboard and scroll to the **Widget** section.
+  </Step>
+
+  <Step title="Configure your preferences">
+    - **Articles** — How many articles to display: 1, 2, or 3
+    - **Theme** — `Auto` (matches your page's color scheme), `Light`, or `Dark`
+    - **Layout** — `Carousel` (horizontal scroll with navigation arrows) or `Grid` (responsive grid)
+
+    The preview updates in real time as you adjust settings.
+  </Step>
+
+  <Step title="Copy and paste the snippet">
+    Click **"Copy Snippet"** to copy the script tag to your clipboard. Paste it into your HTML wherever you want the widget to appear.
+  </Step>
+</Steps>
+
+## Configuration options
+
+Here's an example of the widget snippet with all available options:
+
+```html
+<script
+  src="https://edgeblog.ai/embed/widget.js"
+  data-site="your-site-slug"
+  data-count="3"
+  data-theme="auto"
+  data-layout="carousel"
+></script>
+```
+
+| Attribute | Values | Default | Description |
+|-----------|--------|---------|-------------|
+| `data-site` | Your site slug | **Required** | Identifies which blog to pull articles from |
+| `data-count` | `1`, `2`, `3` | `3` | Number of articles to display |
+| `data-theme` | `auto`, `light`, `dark` | `auto` | Widget color theme |
+| `data-layout` | `carousel`, `grid` | `carousel` | Display layout style |
+
+<Note>Replace `your-site-slug` with your actual site slug. You can find it on your site's **Setup** page.</Note>
+
+## How it works
+
+Once the widget is on your page, it automatically:
+
+- **Loads your latest published articles** and keeps them up to date as you publish new content
+- **Displays article cards** with header images, titles, descriptions, and publish dates
+- **Links to your full articles** on your blog (using your configured blog path and domain)
+- **Tracks impressions and clicks** so you can see widget performance in your [analytics dashboard](/analytics/dashboard)
+- **Detects your page's color scheme** when using the `auto` theme, matching light or dark mode seamlessly
+
+The widget is designed to be fast and non-blocking. It loads asynchronously and won't slow down your page.
+
+<Tip>The widget is a great alternative to CDN routing if you want to showcase your blog content on specific pages without setting up proxy rules. You can also use both — CDN routing for your full blog and the widget to feature articles on other pages.</Tip>
+
+<CardGroup cols={2}>
+  <Card title="CDN Routing" icon="globe" color="#2D5A4A" href="/setup/cdn-routing">
+    Serve your full blog on your domain
+  </Card>
+  <Card title="Analytics" icon="chart-line" color="#2D5A4A" href="/analytics/dashboard">
+    Track widget impressions and clicks
+  </Card>
+</CardGroup>

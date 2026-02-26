@@ -1,0 +1,53 @@
+---
+title: "Account Settings"
+description: "Manage your profile and preferences"
+---
+
+## Profile
+
+Update your personal information from the Account Settings page, accessible from the sidebar user menu.
+
+| Field | Editable | Description |
+|-------|----------|-------------|
+| **First Name** | Yes | Your first name displayed across the dashboard |
+| **Last Name** | Yes | Your last name displayed across the dashboard |
+| **Email** | No | Managed by your authentication provider (read-only) |
+| **Avatar** | No | Pulled automatically from your authentication provider |
+
+Click **Save Changes** to update your profile after making edits.
+
+## Site Settings
+
+Each site has its own settings page accessible from the site's sidebar navigation under **Settings**.
+
+<CardGroup cols={2}>
+  <Card title="Display Name">
+    The name shown in your dashboard for this site. This is for your reference only and does not appear on your public blog.
+  </Card>
+  <Card title="Blog Path">
+    The URL path where your blog is served (e.g., `/blog`, `/resources`). Changing this requires updating your CDN routing rules to match.
+  </Card>
+  <Card title="Site Slug">
+    The unique identifier used in your blog's URL. This is set when you create the site and is used for routing.
+  </Card>
+</CardGroup>
+
+## Re-Cloning Your Website
+
+If your website's design has changed and you want your blog templates to match the updated look, use the **Re-Clone** button on your site's Settings page. This regenerates your blog listing and article templates based on your current website design.
+
+<Tip>
+  Re-cloning does not affect your existing published articles. Only the templates (header, footer, navigation, and styling) are updated.
+</Tip>
+
+## Deleting a Site
+
+In the **Danger Zone** section at the bottom of your site's Settings page, click **Delete Site**. You'll need to type the site's hostname to confirm the deletion.
+
+<Warning>
+  Deleting a site takes your blog offline immediately. Published articles will no longer be accessible to visitors.
+</Warning>
+
+<Tip>
+  Deleted sites can be restored from the main dashboard. Look for the "Deleted Sites" section at the bottom of your sites list.
+</Tip>

@@ -1,0 +1,123 @@
+---
+title: Connecting Your Blog
+description: Serve your EdgeBlog content on your own domain
+---
+
+EdgeBlog hosts and renders your blog content, but your visitors access it through your own domain. To them, your blog at `yourdomain.com/blog` looks and feels like any other page on your site — because it is.
+
+## How it works
+
+You add routing rules to your hosting provider so that requests to your blog path (e.g., `/blog`) are proxied to EdgeBlog's servers. Your visitors never leave your domain — they see your URL in the browser, your SSL certificate, and your branding. EdgeBlog handles the content delivery behind the scenes.
+
+## Setting up routing
+
+You need two routing rules:
+
+1. **Exact path** — `yourdomain.com/blog` proxies to EdgeBlog (your blog listing page)
+2. **Wildcard path** — `yourdomain.com/blog/*` proxies to EdgeBlog (individual articles)
+
+Choose your hosting provider below for specific instructions:
+
+<Tabs>
+  <Tab title="Cloudflare Workers">
+    Create a Cloudflare Worker that intercepts requests to your blog path and forwards them to EdgeBlog.
+
+    ```js
+    export default {
+      async fetch(request) {
+        const url = new URL(request.url);
+        if (url.pathname.startsWith('/blog')) {
+          const target = new URL(request.url);
+          target.hostname = 'edgeblog.ai';
+          target.pathname = '/b/your-site-slug' + url.pathname.replace(/^\/blog/, '');
+          return fetch(target, { headers: request.headers });
+        }
+        return fetch(request);
+      }
+    };
+    ```
+
+    Deploy this Worker and add a route pattern matching `yourdomain.com/blog*`.
+  </Tab>
+
+  <Tab title="Vercel">
+    Add rewrites to your `vercel.json` configuration file:
+
+    ```json
+    {
+      "rewrites": [
+        {
+          "source": "/blog",
+          "destination": "https://edgeblog.ai/b/your-site-slug"
+        },
+        {
+          "source": "/blog/:path*",
+          "destination": "https://edgeblog.ai/b/your-site-slug/:path*"
+        }
+      ]
+    }
+    ```
+
+    Commit and deploy. The rewrites take effect immediately.
+  </Tab>
+
+  <Tab title="Netlify">
+    Add these rules to your `_redirects` file (or `netlify.toml`):
+
+    ```
+    /blog    https://edgeblog.ai/b/your-site-slug    200
+    /blog/*  https://edgeblog.ai/b/your-site-slug/:splat  200
+    ```
+
+    The `200` status code tells Netlify to proxy the request (rewrite) rather than redirect, so your visitors stay on your domain.
+  </Tab>
+
+  <Tab title="Nginx">
+    Add these location blocks to your Nginx server configuration:
+
+    ```nginx
+    location /blog {
+        proxy_pass https://edgeblog.ai/b/your-site-slug;
+        proxy_set_header Host edgeblog.ai;
+        proxy_set_header X-Real-IP $remote_addr;
+    }
+
+    location /blog/ {
+        proxy_pass https://edgeblog.ai/b/your-site-slug/;
+        proxy_set_header Host edgeblog.ai;
+        proxy_set_header X-Real-IP $remote_addr;
+    }
+    ```
+
+    Reload Nginx after saving: `sudo nginx -s reload`.
+  </Tab>
+</Tabs>
+
+<Note>Replace `your-site-slug` with your actual site slug, and `/blog` with your configured blog path. You can find these values on your site's **Setup** page in the dashboard.</Note>
+
+## Verifying your connection
+
+After setting up routing, verify that everything is working:
+
+1. Go to your site's **Setup** page in the EdgeBlog dashboard
+2. Click **"Verify Connection"**
+3. EdgeBlog sends a test request through your domain to confirm the proxy is configured correctly
+
+You'll see one of three statuses:
+
+| Status | Indicator | Meaning |
+|--------|-----------|---------|
+| **Verified** | Green | Your blog is connected and serving content. You're all set. |
+| **Pending** | Amber | Not yet verified. Run verification after setting up your routing rules. |
+| **Error** | Red | Verification failed. Double-check your routing configuration and try again. |
+
+<Warning>If verification fails, the most common issues are: incorrect site slug in the proxy destination, missing wildcard rule for sub-paths, or DNS propagation delay. Wait a few minutes and try again.</Warning>
+
+<CardGroup cols={2}>
+  <Card title="Blog Widget" icon="code" color="#00896C" href="/setup/blog-widget">
+    An alternative to CDN routing — embed your blog with a script tag
+  </Card>
+  <Card title="Generate Articles" icon="wand-magic-sparkles" color="#004537" href="/content/generating-articles">
+    Start creating content for your new blog
+  </Card>
+</CardGroup>

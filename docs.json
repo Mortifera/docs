@@ -1,11 +1,32 @@
 {
   "$schema": "https://mintlify.com/docs.json",
-  "theme": "mint",
-  "name": "Mint Starter Kit",
+  "theme": "palm",
+  "name": "EdgeBlog",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#004537",
+    "light": "#A5C2B9",
+    "dark": "#006B54"
+  },
+  "appearance": {
+    "default": "system"
+  },
+  "background": {
+    "decoration": "gradient",
+    "color": {
+      "dark": "#141E1C"
+    }
+  },
+  "fonts": {
+    "heading": {
+      "family": "Hedvig Letters Serif",
+      "weight": 500
+    },
+    "body": {
+      "family": "Inter"
+    }
+  },
+  "search": {
+    "prompt": "Search docs..."
   },
   "favicon": "/favicon.svg",
   "navigation": {
@@ -14,56 +35,32 @@
         "tab": "Guides",
         "groups": [
           {
-            "group": "Getting started",
-            "pages": [
-              "index",
-              "quickstart",
-              "development"
-            ]
+            "group": "Getting Started",
+            "pages": ["index", "quickstart", "how-it-works"]
+          },
+          {
+            "group": "Setting Up Your Blog",
+            "pages": ["setup/adding-a-site", "setup/cdn-routing", "setup/blog-widget"]
+          },
+          {
+            "group": "Content",
+            "pages": ["content/generating-articles", "content/managing-articles", "content/content-strategy"]
           },
           {
             "group": "Customization",
-            "pages": [
-              "essentials/settings",
-              "essentials/navigation"
-            ]
+            "pages": ["customization/templates", "customization/authors"]
           },
           {
-            "group": "Writing content",
-            "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/reusable-snippets"
-            ]
+            "group": "Analytics & SEO",
+            "pages": ["analytics/dashboard", "analytics/seo-optimization"]
           },
           {
-            "group": "AI tools",
-            "pages": [
-              "ai-tools/cursor",
-              "ai-tools/claude-code",
-              "ai-tools/windsurf"
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "API reference",
-        "groups": [
-          {
-            "group": "API documentation",
-            "pages": [
-              "api-reference/introduction"
-            ]
+            "group": "Team & Account",
+            "pages": ["account/team-management", "account/settings"]
           },
           {
-            "group": "Endpoint examples",
-            "pages": [
-              "api-reference/endpoint/get",
-              "api-reference/endpoint/create",
-              "api-reference/endpoint/delete",
-              "api-reference/endpoint/webhook"
-            ]
+            "group": "Reference",
+            "pages": ["reference/article-statuses", "reference/plans-and-limits", "reference/faq"]
           }
         ]
       }
@@ -71,14 +68,22 @@
     "global": {
       "anchors": [
         {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
+          "anchor": "Website",
+          "href": "https://edgeblog.ai",
+          "icon": "globe",
+          "color": {
+            "light": "#004537",
+            "dark": "#A5C2B9"
+          }
         },
         {
           "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
+          "href": "https://edgeblog.ai/blog",
+          "icon": "newspaper",
+          "color": {
+            "light": "#006B54",
+            "dark": "#A5C2B9"
+          }
         }
       ]
     }
@@ -91,32 +96,19 @@
     "links": [
       {
         "label": "Support",
-        "href": "mailto:hi@mintlify.com"
+        "href": "mailto:support@edgeblog.ai"
       }
     ],
     "primary": {
       "type": "button",
       "label": "Dashboard",
-      "href": "https://dashboard.mintlify.com"
+      "href": "https://edgeblog.ai/app"
     }
   },
-  "contextual": {
-    "options": [
-     "copy",
-     "view",
-     "chatgpt",
-     "claude",
-     "perplexity",
-     "mcp",
-     "cursor",
-     "vscode"
-   ]
+  "metadata": {
+    "timestamp": true
   },
   "footer": {
-    "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
-    }
+    "socials": {}
   }
 }

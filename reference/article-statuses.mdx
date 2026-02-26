@@ -1,0 +1,57 @@
+---
+title: "Article Statuses"
+description: "Understanding the article lifecycle"
+---
+
+Every article in EdgeBlog moves through a defined lifecycle. Understanding these statuses helps you manage your content pipeline effectively.
+
+## Status Flow
+
+```
+Idea → Generating → Draft → Approved → Published
+                      ↓                     ↓
+                    Failed               Deleted
+```
+
+## Status Definitions
+
+| Status | Description |
+|--------|-------------|
+| **Idea** | Queued for generation. The article is waiting to be picked up by the AI pipeline. |
+| **Generating** | The AI is actively working on this article. Sub-phases include researching, writing, reviewing, refining, and imaging. Takes about 5-10 minutes. |
+| **Draft** | Generation is complete. The article is ready for your review. |
+| **Approved** | You've reviewed and approved the article. It's ready to be published. |
+| **Published** | The article is live on your blog and visible to visitors. |
+| **Failed** | An error occurred during generation. You can delete the article and try again. |
+| **Deleted** | The article has been soft-deleted. It can be restored within 30 days from the Deleted tab on your Pipeline page. |
+
+## Status Transitions
+
+<AccordionGroup>
+  <Accordion title="Draft → Approved">
+    Click **Approve** on the article detail page after reviewing the generated content.
+  </Accordion>
+  <Accordion title="Approved → Published">
+    Click **Publish** to make the article live on your blog immediately.
+  </Accordion>
+  <Accordion title="Draft → Published">
+    You can skip the approval step and publish directly from Draft status.
+  </Accordion>
+  <Accordion title="Published → Draft">
+    Click **Unpublish** to take an article offline. The published date is cleared, and the article returns to Draft status for further editing or re-publishing later.
+  </Accordion>
+  <Accordion title="Any → Deleted">
+    Click **Delete** on any article. This is a soft delete — the article is hidden but not permanently removed.
+  </Accordion>
+  <Accordion title="Deleted → Previous Status">
+    Click **Restore** from the **Deleted** tab on your Pipeline page. The article returns to whatever status it had before deletion.
+  </Accordion>
+</AccordionGroup>
+
+## Auto-Publish
+
+If auto-publish is enabled in your [Content Strategy](/content/content-strategy), articles that score **7/10 or higher** during quality review are automatically published upon completion. These articles skip the Draft and Approved stages entirely, going straight from Generating to Published.
+
+<Info>
+  Auto-publish is available on Growth and Enterprise plans. You can enable it from your site's Content Strategy settings.
+</Info>

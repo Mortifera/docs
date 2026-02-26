@@ -1,0 +1,79 @@
+---
+title: Managing Articles
+description: Review, approve, publish, and organize your content
+---
+
+Your site's **Pipeline** page is the command center for all your content. From here you can track articles through every stage, review drafts, publish content, and manage your entire content library.
+
+## Pipeline view
+
+The Pipeline page shows all articles organized by status. Use the filter tabs to quickly find what you're looking for:
+
+| Status | Description |
+|--------|-------------|
+| **All** | Every article across all statuses |
+| **Ideas** | Queued articles waiting to be generated |
+| **Generating** | Articles currently being written by AI |
+| **Drafts** | Completed articles ready for your review |
+| **Approved** | Articles you've approved, ready to publish |
+| **Published** | Live articles visible on your blog |
+| **Failed** | Articles that encountered an error during generation |
+| **Deleted** | Soft-deleted articles (restorable for 30 days) |
+
+## Article actions
+
+From an article's detail page, you can take the following actions depending on its current status:
+
+<AccordionGroup>
+  <Accordion title="Approve">
+    Mark a draft as reviewed and ready to publish. This moves the article from the **Drafts** tab to the **Approved** tab, signaling to your team that the content has been vetted.
+  </Accordion>
+
+  <Accordion title="Publish">
+    Make the article live on your blog immediately. Once published, the article is accessible to visitors and indexed by search engines.
+  </Accordion>
+
+  <Accordion title="Unpublish">
+    Take a published article offline. The article returns to draft status and is no longer visible on your blog.
+  </Accordion>
+
+  <Accordion title="Delete">
+    Soft-delete the article. Deleted articles are moved to the **Deleted** tab and can be restored for up to 30 days.
+  </Accordion>
+
+  <Accordion title="Restore">
+    Recover a deleted article to its previous status. Available from the **Deleted** tab within the 30-day retention window.
+  </Accordion>
+</AccordionGroup>
+
+## Article detail page
+
+Click any article to view its detail page. This gives you a complete picture of the article and its metadata:
+
+- **Live preview** — See exactly how the article will appear on your blog, rendered with your site's template and styling
+- **Status card** — Current status with available actions (approve, publish, unpublish, delete)
+- **Author card** — Assign or change the article's byline author
+- **URL & Slug card** — View and customize the article's URL slug
+- **Details card** — Generation phase, review score, and iteration count
+- **Timestamps card** — Created, updated, and published dates
+
+## Editing slugs
+
+You can customize an article's URL slug from the detail page. Click the slug field to edit it. Slugs are automatically sanitized to lowercase with hyphens — spaces and special characters are converted for you.
+
+<Warning>Changing the slug of a published article will break existing links. The old URL will return a 404 — no automatic redirect is created. If the article has already been indexed by search engines, consider keeping the original slug.</Warning>
+
+## Scheduling
+
+You can set a scheduled publish date using the date picker on the article detail page. This serves as a planning marker for your content calendar, helping you and your team coordinate when articles should go live.
+
+<Tip>Use scheduled dates alongside your [content strategy](/content/content-strategy) cadence to plan a consistent publishing rhythm across weeks and months.</Tip>
+
+<CardGroup cols={2}>
+  <Card title="Generate articles" icon="wand-magic-sparkles" color="#004537" href="/content/generating-articles">
+    Learn how the AI creates your content
+  </Card>
+  <Card title="Content strategy" icon="bullseye" color="#006B54" href="/content/content-strategy">
+    Configure tone, audience, and publishing cadence
+  </Card>
+</CardGroup>
