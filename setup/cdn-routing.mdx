@@ -3,18 +3,18 @@ title: Connecting Your Blog
 description: Serve your EdgeBlog content on your own domain
 ---
 
-EdgeBlog hosts and renders your blog content, but your visitors access it through your own domain. To them, your blog at `yourdomain.com/blog` looks and feels like any other page on your site — because it is.
+EdgeBlog hosts and renders your blog content, but your visitors access it through your own domain. To them, your blog at `yourdomain.com/blog` looks and feels like any other page on your site, because it is.
 
 ## How it works
 
-You add routing rules to your hosting provider so that requests to your blog path (e.g., `/blog`) are proxied to EdgeBlog's servers. Your visitors never leave your domain — they see your URL in the browser, your SSL certificate, and your branding. EdgeBlog handles the content delivery behind the scenes.
+You add routing rules to your hosting provider so that requests to your blog path (e.g., `/blog`) are proxied to EdgeBlog's servers. Your visitors never leave your domain. They see your URL in the browser, your SSL certificate, and your branding. EdgeBlog handles the content delivery behind the scenes.
 
 ## Setting up routing
 
 You need two routing rules:
 
-1. **Exact path** — `yourdomain.com/blog` proxies to EdgeBlog (your blog listing page)
-2. **Wildcard path** — `yourdomain.com/blog/*` proxies to EdgeBlog (individual articles)
+1. **Exact path:** `yourdomain.com/blog` proxies to EdgeBlog (your blog listing page)
+2. **Wildcard path:** `yourdomain.com/blog/*` proxies to EdgeBlog (individual articles)
 
 Choose your hosting provider below for specific instructions:
 
@@ -95,6 +95,10 @@ Choose your hosting provider below for specific instructions:
 
 <Note>Replace `your-site-slug` with your actual site slug, and `/blog` with your configured blog path. You can find these values on your site's **Setup** page in the dashboard.</Note>
 
+## Testing your setup
+
+After configuring your routing rules, try visiting `yourdomain.com/blog` in your browser. If you see your EdgeBlog content, the proxy is working. If you see a 404 or your site's own 404 page, double-check your routing configuration.
+
 ## Verifying your connection
 
 After setting up routing, verify that everything is working:
@@ -111,11 +115,11 @@ You'll see one of three statuses:
 | **Pending** | Amber | Not yet verified. Run verification after setting up your routing rules. |
 | **Error** | Red | Verification failed. Double-check your routing configuration and try again. |
 
-<Warning>If verification fails, the most common issues are: incorrect site slug in the proxy destination, missing wildcard rule for sub-paths, or DNS propagation delay. Wait a few minutes and try again.</Warning>
+<Warning>If verification fails, the most common issues are: incorrect site slug in the proxy destination, mismatched blog path between EdgeBlog and your routing rules, missing wildcard rule for sub-paths, missing Host header forwarding (especially with Nginx), SSL/TLS configuration issues, or DNS propagation delay. Wait a few minutes and try again.</Warning>
 
 <CardGroup cols={2}>
   <Card title="Blog Widget" icon="code" color="#00896C" href="/setup/blog-widget">
-    An alternative to CDN routing — embed your blog with a script tag
+    Drive traffic to recent articles by embedding them across your site
   </Card>
   <Card title="Generate Articles" icon="wand-magic-sparkles" color="#004537" href="/content/generating-articles">
     Start creating content for your new blog

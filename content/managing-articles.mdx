@@ -20,6 +20,8 @@ The Pipeline page shows all articles organized by status. Use the filter tabs to
 | **Failed** | Articles that encountered an error during generation |
 | **Deleted** | Soft-deleted articles (restorable for 30 days) |
 
+<Info>You can manage an article's metadata (status, slug, author, publish date) from the detail page. Direct editing of article body content is not currently available. If an article needs significant changes, you can delete it and generate a new one.</Info>
+
 ## Article actions
 
 From an article's detail page, you can take the following actions depending on its current status:
@@ -34,7 +36,7 @@ From an article's detail page, you can take the following actions depending on i
   </Accordion>
 
   <Accordion title="Unpublish">
-    Take a published article offline. The article returns to draft status and is no longer visible on your blog.
+    Take a published article offline. The article returns to draft status, the published URL returns a 404, and the published date is cleared. If you re-publish later, a new publish date is assigned.
   </Accordion>
 
   <Accordion title="Delete">
@@ -50,22 +52,24 @@ From an article's detail page, you can take the following actions depending on i
 
 Click any article to view its detail page. This gives you a complete picture of the article and its metadata:
 
-- **Live preview** — See exactly how the article will appear on your blog, rendered with your site's template and styling
-- **Status card** — Current status with available actions (approve, publish, unpublish, delete)
-- **Author card** — Assign or change the article's byline author
-- **URL & Slug card** — View and customize the article's URL slug
-- **Details card** — Generation phase, review score, and iteration count
-- **Timestamps card** — Created, updated, and published dates
+- **Live preview:** See exactly how the article will appear on your blog, rendered with your site's template and styling
+- **Status card:** Current status with available actions (approve, publish, unpublish, delete)
+- **Author card:** Assign or change the article's byline author
+- **URL & Slug card:** View and customize the article's URL slug
+- **Details card:** Generation phase, review score, and iteration count
+- **Timestamps card:** Created, updated, and published dates
 
 ## Editing slugs
 
-You can customize an article's URL slug from the detail page. Click the slug field to edit it. Slugs are automatically sanitized to lowercase with hyphens — spaces and special characters are converted for you.
+You can customize an article's URL slug from the detail page. Click the slug field to edit it. Slugs are automatically sanitized to lowercase with hyphens. Spaces and special characters are converted for you.
 
-<Warning>Changing the slug of a published article will break existing links. The old URL will return a 404 — no automatic redirect is created. If the article has already been indexed by search engines, consider keeping the original slug.</Warning>
+<Warning>Changing the slug of a published article will break existing links. The old URL will return a 404, and no automatic redirect is created. If the article has already been indexed by search engines, consider keeping the original slug.</Warning>
 
 ## Scheduling
 
 You can set a scheduled publish date using the date picker on the article detail page. This serves as a planning marker for your content calendar, helping you and your team coordinate when articles should go live.
+
+<Note>Scheduled dates serve as planning markers for your content calendar. Automatic publishing at the scheduled time is not yet available. You'll need to manually publish articles when you're ready.</Note>
 
 <Tip>Use scheduled dates alongside your [content strategy](/content/content-strategy) cadence to plan a consistent publishing rhythm across weeks and months.</Tip>
 
