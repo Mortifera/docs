@@ -42,7 +42,7 @@
           },
           {
             "group": "Content",
-            "pages": ["content/generating-articles", "content/managing-articles", "content/content-strategy"]
+            "pages": ["content/generating-articles", "content/managing-articles", "content/content-strategy", "content/early-access-features"]
           },
           {
             "group": "Customization",
