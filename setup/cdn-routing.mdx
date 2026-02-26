@@ -40,8 +40,8 @@ Choose your hosting provider below for specific instructions:
     Deploy this Worker and add a route pattern matching `yourdomain.com/blog*`.
   </Tab>
 
-  <Tab title="Vercel">
-    Add rewrites to your `vercel.json` configuration file:
+  <Tab title="Vercel (vercel.json)">
+    Add rewrites to your `vercel.json` configuration file. This is the **recommended** approach for Vercel — it preserves response headers for the best verification experience.
 
     ```json
     {
@@ -59,6 +59,31 @@ Choose your hosting provider below for specific instructions:
     ```
 
     Commit and deploy. The rewrites take effect immediately.
+  </Tab>
+
+  <Tab title="Next.js (next.config)">
+    If you prefer to keep routing in your Next.js config (or don't have a `vercel.json`), add rewrites to `next.config.ts`:
+
+    ```ts
+    const nextConfig = {
+      async rewrites() {
+        return [
+          {
+            source: '/blog',
+            destination: 'https://edgeblog.ai/b/your-site-slug',
+          },
+          {
+            source: '/blog/:path*',
+            destination: 'https://edgeblog.ai/b/your-site-slug/:path*',
+          },
+        ];
+      },
+    };
+
+    export default nextConfig;
+    ```
+
+    <Warning>Next.js rewrites may strip custom response headers from the proxied response. This won't affect your blog content, but EdgeBlog's verification will use content inspection instead of header detection. For full header passthrough, use `vercel.json` rewrites instead.</Warning>
   </Tab>
 
   <Tab title="Netlify">
@@ -106,6 +131,11 @@ After setting up routing, verify that everything is working:
 1. Go to your site's **Setup** page in the EdgeBlog dashboard
 2. Click **"Verify Connection"**
 3. EdgeBlog sends a test request through your domain to confirm the proxy is configured correctly
+
+EdgeBlog uses two detection methods to verify your connection:
+
+1. **Header detection** — EdgeBlog blog pages return a special `x-edgeblog` response header. If the header arrives through your proxy, verification passes immediately. This is the strongest signal.
+2. **Content detection** — If the header is missing (some proxies strip custom headers), EdgeBlog checks the response body for a signature meta tag. If found, verification still passes. You'll see a hint suggesting `vercel.json` rewrites for full header passthrough if you're on Vercel.
 
 You'll see one of three statuses:
 
