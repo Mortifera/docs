@@ -1,0 +1,114 @@
+---
+title: SEO Discovery
+description: AI-generated site summaries for llms.txt and smart sitemaps with customer site pages
+---
+
+SEO Discovery uses AI to analyze your website and generate rich discovery files that help search engines and AI crawlers understand your company, products, and content.
+
+## What it does
+
+SEO Discovery generates two things:
+
+1. **Rich llms.txt / llms-full.txt** — AI-generated company summaries with your company name, industry, products, target audience, and content focus. This gives AI crawlers structured context about who you are and what your blog covers.
+
+2. **Smart sitemap.xml** — Discovers your existing website pages (homepage, product pages, about pages, etc.) and includes them in your blog's sitemap with intelligent priority values. Combined with your blog article URLs, this creates a comprehensive sitemap covering your entire online presence.
+
+## How it works
+
+When your site template is first created, EdgeBlog automatically:
+
+1. Scrapes your website to understand your business
+2. Analyzes the content to identify your company, products, and audience
+3. Generates a structured summary for your llms.txt files
+4. Discovers your site pages and assigns sitemap priorities
+
+Your blog articles are always included dynamically — they appear in llms.txt and sitemap.xml immediately when published, without needing a regeneration.
+
+## Tiering
+
+<AccordionGroup>
+  <Accordion title="Starter — Basic summary">
+    - Homepage scrape only
+    - AI-generated basic summary (company name, industry, products, audience)
+    - Sitemap includes discovered site pages with heuristic priorities
+    - Manual refresh via dashboard button
+  </Accordion>
+
+  <Accordion title="Growth & Enterprise — Comprehensive summary">
+    - Full site mapping: discovers all your site URLs automatically
+    - Multi-page scrape of your most important pages (about, products, services, etc.)
+    - AI research agent investigates your company and industry space
+    - Comprehensive summary with detailed paragraphs for llms-full.txt
+    - Smart sitemap priorities: AI classifies each page by type and assigns priority based on audience relevance
+    - Monthly auto-refresh with quarterly deep rescan
+    - Manual refresh via dashboard button
+  </Accordion>
+</AccordionGroup>
+
+## llms.txt format
+
+Your llms.txt file follows the [llms.txt specification](https://llmstxt.org/) and includes:
+
+- **Company name** as the heading
+- **Blockquote summary** — 2-3 sentences describing your company and blog focus
+- **About section** — Industry, products, audience, and content focus
+- **Recent articles** — Links to your latest published articles with descriptions
+- **Resources** — Links to your RSS feed, full article index, and sitemap
+
+The llms-full.txt file includes everything above plus:
+- Detailed company overview (3-5 paragraphs on Growth+)
+- Complete article index with metadata (descriptions, categories, tags, authors)
+- GEO data when enabled (AI summaries, key facts, related queries)
+
+## Smart sitemap
+
+The sitemap.xml combines:
+
+- **Your website pages** — Discovered via site mapping, with priority based on page type:
+  - Homepage: 1.0
+  - Product/service pages: 0.9
+  - About/case studies: 0.7
+  - Pricing: 0.6
+  - Resources: 0.5
+- **Blog content** — Articles, author pages, and discovery files with appropriate priorities
+
+On Starter plans, page priorities use URL-based heuristics. On Growth+, an AI classifier assigns priorities based on your target audience.
+
+## Manual refresh
+
+You can regenerate your SEO Discovery data at any time from the **Setup** page:
+
+1. Go to your site's **Setup** page
+2. Find the **AI Site Summary** section
+3. Click **Regenerate**
+
+The refresh runs in the background and typically completes within a minute.
+
+## Privacy
+
+SEO Discovery only includes information that is publicly visible on your website. Internal knowledge (from Intel gap resolution) provides context to the AI for understanding your business, but any information that isn't verifiable from your public website is excluded from the generated summaries.
+
+## Tips
+
+<Steps>
+  <Step title="Submit your sitemap to Google Search Console">
+    Your sitemap URL is shown on the Setup page. Submit it to [Google Search Console](https://search.google.com/search-console) to help Google discover all your pages.
+  </Step>
+
+  <Step title="Add your sitemap to Bing Webmaster Tools">
+    Submit the same sitemap URL to [Bing Webmaster Tools](https://www.bing.com/webmasters) for Bing and other search engines.
+  </Step>
+
+  <Step title="Set up root-level llms.txt routing">
+    AI crawlers look for llms.txt at the domain root. Add the routing rules shown on your Setup page to serve your llms.txt at both `yourdomain.com/llms.txt` and `yourdomain.com/blog/llms.txt`.
+  </Step>
+</Steps>
+
+<CardGroup cols={2}>
+  <Card title="SEO Optimization" icon="magnifying-glass" color="#2D5A4A" href="/analytics/seo-optimization">
+    Learn about automatic SEO and GEO optimization
+  </Card>
+  <Card title="Plans & Limits" icon="layer-group" color="#006B54" href="/reference/plans-and-limits">
+    Compare features across plans
+  </Card>
+</CardGroup>

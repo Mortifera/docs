@@ -50,7 +50,7 @@
           },
           {
             "group": "Analytics & SEO",
-            "pages": ["analytics/dashboard", "analytics/seo-optimization"]
+            "pages": ["analytics/dashboard", "analytics/seo-optimization", "analytics/seo-discovery"]
           },
           {
             "group": "Team & Account",
